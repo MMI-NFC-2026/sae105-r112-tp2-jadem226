@@ -11,15 +11,15 @@ html:has(.menu:popover-open) {
     cursor: pointer;
 }
 .menu {
-    transition: 400ms allow-discrete;
+    transition: 400ms allow-discrete;/*transitions en 400ms y compris sur les propriétés à valeurs "discretes"*/
     opacity: o;
 }
 .menu:popover-open {
-    opacity: 1;
+    opacity: 1; /* on met l'opacité à 1 qui changera progressivement du fait de la transition mise en place. */
 }
 @starting-style {
     .menu:popover-open {
-    opacity: O;
+    opacity: O;/* on commence par une opacité à 0 (transparent). */
     }
 }
 
@@ -32,4 +32,11 @@ html:has(.menu:popover-open) {
 .menu:popover-open .burger--close {
     transform: rotate(90deg);
     transition: 400ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu,
+    .menu .burger--close {
+        transition: none;
+    }
 }
